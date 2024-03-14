@@ -1,2 +1,0 @@
-curl 'https://api.github.com/repos/ThirteenAG/Ultimate-ASI-Loader/releases/latest' | jq '.assets[0].browser_download_url' 
-
