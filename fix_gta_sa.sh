@@ -52,5 +52,6 @@ wget $(echo $url | sed 's/"//g')
 echo
 
 # GTASA.WidescreenFix by ThirteenAG
+echo "Downloading WidescreenFix"
 wget https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
 echo
