@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 # set -euo
 
-### Patches
+## Silent's patches/mods
 
-# ## Silent's patches/mods
-#
-# echo "Downloading SilentPatch"
-# wget --no-check-certificate https://silent.rockstarvision.com/uploads/SilentPatchSA.zip -O SilentPatch.zip
-# 
-# echo "Downloading Ginput"
-# wget --no-check-certificate https://silent.rockstarvision.com/uploads/GInputSA.zip
-#
+echo "Downloading SilentPatch"
+wget --no-check-certificate https://silent.rockstarvision.com/uploads/SilentPatchSA.zip -O SilentPatch.zip
+echo
 
-# wget -O wshps.rar 'https://www.gtagarage.com/mods/download.php?f=35121'
+echo "Downloading Ginput"
+wget --no-check-certificate https://silent.rockstarvision.com/uploads/GInputSA.zip
+echo
+
+## Wesser's Widescreen HOR+ Support mod
+echo "Downloading Widescreen HOR+ Support"
+wget -O wshps.rar 'https://www.gtagarage.com/mods/download.php?f=35121'
+echo
 
 ## Download mods and patches from github
 github_repos=(
@@ -29,16 +31,15 @@ github_repos=(
 for ((i = 0; i < ${#github_repos[@]}; i++)); do
   # Capture download URL
   url=$(curl -s https://api.github.com/repos/${github_repos[$i]}/releases/latest | jq '.assets[0].browser_download_url')
-  echo "$url"
 
   # Check if url is not empty
   if [[ ! -z "$url" ]]; then
-    echo
     echo "Downloading ${github_repos[i]}"
     wget $(echo "$url" | sed 's/"//g')
-  else
     echo
+  else
     echo "Error: Failed to download ${github_repo[i]}"
+    echo
   fi
 done
 
@@ -47,8 +48,9 @@ done
 # Project2DFX by ThirteenAG
 url=$(curl -s https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
 echo "Downloading Project2DFX"
-echo
 wget $(echo $url | sed 's/"//g')
+echo
 
 # GTASA.WidescreenFix by ThirteenAG
 wget https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
+echo
