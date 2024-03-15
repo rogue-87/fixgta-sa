@@ -4,16 +4,16 @@
 ## Silent's patches/mods
 
 echo "Downloading SilentPatch"
-wget --no-check-certificate https://silent.rockstarvision.com/uploads/SilentPatchSA.zip -O SilentPatch.zip
+wget -q --show-progress --no-check-certificate https://silent.rockstarvision.com/uploads/SilentPatchSA.zip -O SilentPatch.zip
 echo
 
 echo "Downloading Ginput"
-wget --no-check-certificate https://silent.rockstarvision.com/uploads/GInputSA.zip
+wget -q --show-progress --no-check-certificate https://silent.rockstarvision.com/uploads/GInputSA.zip
 echo
 
 ## Wesser's Widescreen HOR+ Support mod
 echo "Downloading Widescreen HOR+ Support"
-wget -O wshps.rar 'https://www.gtagarage.com/mods/download.php?f=35121'
+wget -q --show-progress -O wshps.rar 'https://www.gtagarage.com/mods/download.php?f=35121'
 echo
 
 ## Download mods and patches from github
@@ -35,7 +35,7 @@ for ((i = 0; i < ${#github_repos[@]}; i++)); do
   # Check if url is not empty
   if [[ ! -z "$url" ]]; then
     echo "Downloading ${github_repos[i]}"
-    wget $(echo "$url" | sed 's/"//g')
+    wget -q --show-progress $(echo "$url" | sed 's/"//g')
     echo
   else
     echo "Error: Failed to download ${github_repo[i]}"
@@ -48,10 +48,10 @@ done
 # Project2DFX by ThirteenAG
 url=$(curl -s https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
 echo "Downloading Project2DFX"
-wget $(echo $url | sed 's/"//g')
+wget -q --show-progress $(echo $url | sed 's/"//g')
 echo
 
 # GTASA.WidescreenFix by ThirteenAG
 echo "Downloading WidescreenFix"
-wget https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
+wget -q --show-progress https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
 echo
