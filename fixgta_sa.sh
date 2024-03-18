@@ -30,7 +30,7 @@ github_repos=(
 
 for ((i = 0; i < ${#github_repos[@]}; i++)); do
   # Capture download URL
-  url=$(curl -s https://api.github.com/repos/${github_repos[$i]}/releases/latest | jq '.assets[0].browser_download_url')
+  url=$(curl -s https://api.github.com/repos/"${github_repos[$i]}"/releases/latest | jq '.assets[0].browser_download_url')
 
   # Check if url is not empty
   if [[ ! -z "$url" ]]; then
@@ -38,7 +38,7 @@ for ((i = 0; i < ${#github_repos[@]}; i++)); do
     wget -q --show-progress $(echo "$url" | sed 's/"//g')
     echo
   else
-    echo "Error: Failed to download ${github_repo[i]}"
+    echo "Error: Failed to download ${github_repos[i]}"
     echo
   fi
 done
@@ -48,7 +48,7 @@ done
 # Project2DFX by ThirteenAG
 url=$(curl -s https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
 echo "Downloading Project2DFX"
-wget -q --show-progress $(echo $url | sed 's/"//g')
+wget -q --show-progress $(echo "$url" | sed 's/"//g')
 echo
 
 # GTASA.WidescreenFix by ThirteenAG
