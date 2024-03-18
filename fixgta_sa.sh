@@ -1,20 +1,52 @@
 #!/usr/bin/env bash
 # set -euo
 
+###
+downloadRSV(){
+  # 1st param is link
+  # 2nd param is mod name (optional)
+  echo "Downloading $2"
+  wget -q --show-progress --no-check-certificate "$1"
+  echo
+}
+
+downloadGithub(){
+  # 1st param is list
+  local github_repos=("$@")
+  for repo in "${github_repos[@]}"; do
+    # Capture download URL
+    url=$(curl -s https://api.github.com/repos/"$repo"/releases/latest | jq '.assets[0].browser_download_url')
+
+    # Check if url is not empty
+    if [[ "$url" != null  && "$url" != "" ]]; then
+      echo "Downloading $repo"
+      wget -q --show-progress $(echo "$url" | sed 's/"//g')
+      echo
+    else
+      echo "Error: Failed to download $repo"
+      echo
+    fi
+  done
+}
+
+# This one needs more work as mods may come compressed in many formats
+# but for now this works
+downloadGtaGarage(){
+  # 1st param is link
+  # 2nd param is filename(must include the correct format)
+  # 3rd param is mod name (optional)
+  echo "Download '$3'"
+  wget -q --show-progress -O "$2" "$1"
+  echo
+}
+###
+
 ## Silent's patches/mods
+downloadRSV https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
+downloadRSV https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
 
-echo "Downloading SilentPatch"
-wget -q --show-progress --no-check-certificate https://silent.rockstarvision.com/uploads/SilentPatchSA.zip -O SilentPatch.zip
-echo
-
-echo "Downloading Ginput"
-wget -q --show-progress --no-check-certificate https://silent.rockstarvision.com/uploads/GInputSA.zip
-echo
-
-## Wesser's Widescreen HOR+ Support mod
-echo "Downloading Widescreen HOR+ Support"
-wget -q --show-progress -O wshps.rar 'https://www.gtagarage.com/mods/download.php?f=35121'
-echo
+## GtaGrage
+downloadGtaGarage https://www.gtagarage.com/mods/download.php?f=35121 "wshps.rar" "Widescreen HOR+ Support" 
 
 ## Download mods and patches from github
 github_repos=(
@@ -25,26 +57,9 @@ github_repos=(
   ThirteenAG/III.VC.SA.WindowedMode
   aap/skygfx
 )
-# ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120
-# ThirteenAG/WidescreenFixesPack # for some reason it doesn't list all the releases ID for this one'
-
-for ((i = 0; i < ${#github_repos[@]}; i++)); do
-  # Capture download URL
-  url=$(curl -s https://api.github.com/repos/"${github_repos[$i]}"/releases/latest | jq '.assets[0].browser_download_url')
-
-  # Check if url is not empty
-  if [[ ! -z "$url" ]]; then
-    echo "Downloading ${github_repos[i]}"
-    wget -q --show-progress $(echo "$url" | sed 's/"//g')
-    echo
-  else
-    echo "Error: Failed to download ${github_repos[i]}"
-    echo
-  fi
-done
+downloadGithub "${github_repos[@]}"
 
 ## Download mods and patches from github repos with tags
-
 # Project2DFX by ThirteenAG
 url=$(curl -s https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
 echo "Downloading Project2DFX"
@@ -55,3 +70,6 @@ echo
 echo "Downloading WidescreenFix"
 wget -q --show-progress https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
 echo
+
+## Download from my github repo(mods from mixmods)
+#
