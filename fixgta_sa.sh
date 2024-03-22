@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set -euo
 
-###
+### Download Latest Mods & Patches
 downloadRSV(){
   # 1st param is link
   # 2nd param is mod name (optional)
@@ -53,7 +53,6 @@ github_repos=(
   ThirteenAG/Ultimate-ASI-Loader
   thelink2012/modloader
   cleolibrary/CLEO4
-  JuniorDjjr/CLEOPlus
   ThirteenAG/III.VC.SA.WindowedMode
   aap/skygfx
 )
@@ -70,6 +69,36 @@ echo
 echo "Downloading WidescreenFix"
 wget -q --show-progress https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
 echo
+###
 
-## Download from my github repo(mods from mixmods)
-#
+### Download Stable Mods & Patches 
+###
+
+# echo "Fix GTA-SA"
+# echo "Install ..."
+# opts=(
+#   "Latest mods/patches (Better compatibility with newer mods)"
+#   "Stable mods/patches (Worse compatibility with newer mods but better stability)" 
+#   "Exit"
+# )
+# PS3="Please select an option: "  # Set the prompt for user input
+# select opt in "${opts[@]}"; do
+#   # Code to execute based on the chosen option
+#   case $REPLY in
+#     1)
+#       echo "You selected Option 1"
+#       ;;
+#     2)
+#       echo "You selected Option 2"
+#       ;;
+#     3)
+#       echo "Quitting..."
+#       sleep 2s
+#       echo "Goodbye :D"
+#       ;;
+#     *) echo
+#       "Invalid option"
+#       ;;
+#   esac
+#   break  # Exit the loop after a selection is made
+# done
