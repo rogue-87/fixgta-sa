@@ -71,6 +71,19 @@ installLatest(){
   echo
 
   ## Download mods/patches from my repo
+  mods_list=(
+    "CLEOPlus.zip"
+    "CrashInfo.zip"
+    "FramerateVigilante.7z"
+    "Improved_Streaming.7z"
+    "Sky_Gradient_Fix.7z"
+  )
+  for  mod in "${mods_list[@]}";
+  do
+    echo
+    wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
+    echo
+  done
   #
 }
 ### End
@@ -93,7 +106,7 @@ select opt in "${opts[@]}"; do
   case $REPLY in
     1)
       echo "Installing latest mods and patches"
-      downloadLatest
+      installLatest
       ;;
     2)
       echo "You selected Option 2"
