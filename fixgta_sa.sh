@@ -15,7 +15,7 @@ downloadGithub(){
   local github_repos=("$@")
   for repo in "${github_repos[@]}"; do
     # Capture download URL
-    url=$(curl -s https://api.github.com/repos/"$repo"/releases/latest | jq '.assets[0].browser_download_url')
+    url=$(wget -qO- https://api.github.com/repos/"$repo"/releases/latest | jq '.assets[0].browser_download_url')
 
     # Check if url is not empty
     if [[ "$url" != null  && "$url" != "" ]]; then
@@ -35,11 +35,10 @@ downloadGtaGarage(){
   # 1st param is link
   # 2nd param is filename(must include the correct format)
   # 3rd param is mod name (optional)
-  echo "Download '$3'"
+  echo "Downloading '$3'"
   wget -q --show-progress -O "$2" "$1"
   echo
 }
-###
 
 ## Silent's patches/mods
 downloadRSV https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
@@ -60,7 +59,7 @@ downloadGithub "${github_repos[@]}"
 
 ## Download mods and patches from github repos with tags
 # Project2DFX by ThirteenAG
-url=$(curl -s https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
+url=$(wget -qO- https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
 echo "Downloading Project2DFX"
 wget -q --show-progress $(echo "$url" | sed 's/"//g')
 echo
@@ -69,10 +68,14 @@ echo
 echo "Downloading WidescreenFix"
 wget -q --show-progress https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
 echo
-###
+
+## Download mods/patches from my repo
+#
+
+### End
 
 ### Download Stable Mods & Patches 
-###
+### End
 
 # echo "Fix GTA-SA"
 # echo "Install ..."
