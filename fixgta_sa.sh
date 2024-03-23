@@ -92,7 +92,7 @@ installLatest(){
   echo backing up some files ...
   sleep 2s
   mv gta_sa.exe gta_sa.exe.bak
-  mv vorbisFile.dll vorbisFile.dll.back 
+  mv vorbisFile.dll vorbisFile.dll.bak 
 
   # Ultimate-ASI-Loader
   echo installing Ultimate-ASI-Loader
