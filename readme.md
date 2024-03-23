@@ -8,6 +8,7 @@ I'm currently updating the script so don't run it yet(unless you know what you'r
 
 - wget
 - jq
+- 7z
 - Dowgraded version of San Andreas(v1.0)
 
 ## Mods list
