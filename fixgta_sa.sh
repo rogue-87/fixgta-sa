@@ -163,5 +163,5 @@ select opt in "${opts[@]}"; do
       echo "Invalid option quitting"
       ;;
   esac
-  break  # Exit the loop after a selection is made
+  break 
 done
