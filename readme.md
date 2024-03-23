@@ -2,7 +2,7 @@
 
 This is a simple script that sets up GTA San Andreas on Linux
 
-For now the script only downloads the mods
+I'm currently updating the script so don't run it yet(unless you know what you're doing)
 
 ## Prerequisites
 

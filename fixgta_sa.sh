@@ -85,6 +85,48 @@ installLatest(){
     echo
   done
   #
+  
+  ## Install the mods & patches
+  
+  # bak up some files
+  echo backing up some files ...
+  sleep 2s
+  mv gta_sa.exe gta_sa.exe.bak
+  mv vorbisFile.dll vorbisFile.dll.back 
+
+  # Ultimate-ASI-Loader
+  echo installing Ultimate-ASI-Loader
+  sleep 2s
+  7z x Ultimate-ASI-Loader.zip
+  mv dinput8.dll vorbisFile.dll
+
+  # Cleo & Cleo+
+  echo 'installing Cleo & Cleo+'
+  sleep 2s
+  7z x CLEO4.zip -otemp/
+  rm -rf temp/cleo_readme temp/cleo_sdk temp/vorbisFile.dll
+  mv temp/* .
+
+  7z x CLEOPlus.zip -otemp/
+  mv temp/EN/CLEO/CLEO+.cleo ./cleo/
+  rm -rf temp
+
+  # modloader
+  echo installing modloader
+  sleep 2s
+  7z x modloader.zip -otemp/
+  mv temp/modloader . 
+  mv temp/modloader.asi .
+  rm -rf temp
+
+  # Silent Patch
+  echo installing SilentPatch
+  sleep 2s
+  7z x SilentPatchSA.zip -oSilentPatch
+  rm SilentPatch/ReadMe.txt
+  mv SilentPatch modloader
+
+  rm ./*.zip ./*.7z ./*.rar
 }
 ### End
 
@@ -109,15 +151,16 @@ select opt in "${opts[@]}"; do
       installLatest
       ;;
     2)
-      echo "You selected Option 2"
+      echo "Installing stable mods and patches"
+      installStable
       ;;
     3)
       echo "Quitting..."
       sleep 2s
       echo "Goodbye :D"
       ;;
-    *) echo
-      "Invalid option"
+    *) 
+      echo "Invalid option quitting"
       ;;
   esac
   break  # Exit the loop after a selection is made
