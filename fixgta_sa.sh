@@ -29,32 +29,18 @@ downloadGithub(){
   done
 }
 
-# This one needs more work as mods may come compressed in many formats
-# but for now this works
-downloadGtaGarage(){
-  # 1st param is link
-  # 2nd param is filename(must include the correct format)
-  # 3rd param is mod name (optional)
-  echo "Downloading '$3'"
-  wget -q --show-progress -O "$2" "$1"
-  echo
-}
-
 installLatest(){
   ## Silent's patches/mods
   downloadRSV https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
   downloadRSV https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
 
-  ## GtaGrage
-  downloadGtaGarage https://www.gtagarage.com/mods/download.php?f=35121 "wshps.rar" "Widescreen HOR+ Support" 
-
   ## Download mods and patches from github
   github_repos=(
-    ThirteenAG/Ultimate-ASI-Loader
-    thelink2012/modloader
-    cleolibrary/CLEO4
-    ThirteenAG/III.VC.SA.WindowedMode
-    aap/skygfx
+    "ThirteenAG/Ultimate-ASI-Loader"
+    "cleolibrary/CLEO4"
+    "thelink2012/modloader"
+    "ThirteenAG/III.VC.SA.WindowedMode"
+    "aap/skygfx"
   )
   downloadGithub "${github_repos[@]}"
 
@@ -65,11 +51,6 @@ installLatest(){
   wget -q --show-progress $(echo "$url" | sed 's/"//g')
   echo
 
-  # GTASA.WidescreenFix by ThirteenAG
-  echo "Downloading WidescreenFix"
-  wget -q --show-progress https://github.com/ThirteenAG/WidescreenFixesPack/releases/download/gtasa/GTASA.WidescreenFix.zip
-  echo
-
   ## Download mods/patches from my repo
   mods_list=(
     "CLEOPlus.zip"
@@ -77,8 +58,9 @@ installLatest(){
     "FramerateVigilante.7z"
     "Improved_Streaming.7z"
     "Sky_Gradient_Fix.7z"
+    "SA_Widescreen_Fix2018.7z"
   )
-  for  mod in "${mods_list[@]}";
+  for mod in "${mods_list[@]}";
   do
     echo
     wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
@@ -89,19 +71,19 @@ installLatest(){
   ## Install the mods & patches
   
   # bak up some files
-  echo backing up some files ...
+  echo "Backing up some files ..."
   sleep 2s
   mv gta_sa.exe gta_sa.exe.bak
   mv vorbisFile.dll vorbisFile.dll.bak 
 
   # Ultimate-ASI-Loader
-  echo installing Ultimate-ASI-Loader
+  echo "Installing Ultimate-ASI-Loader"
   sleep 2s
   7z x Ultimate-ASI-Loader.zip
   mv dinput8.dll vorbisFile.dll
 
   # Cleo & Cleo+
-  echo 'installing Cleo & Cleo+'
+  echo "Installing Cleo & Cleo+"
   sleep 2s
   7z x CLEO4.zip -otemp/
   rm -rf temp/cleo_readme temp/cleo_sdk temp/vorbisFile.dll
@@ -112,7 +94,7 @@ installLatest(){
   rm -rf temp
 
   # modloader
-  echo installing modloader
+  echo "Installing modloader"
   sleep 2s
   7z x modloader.zip -otemp/
   mv temp/modloader . 
@@ -120,17 +102,28 @@ installLatest(){
   rm -rf temp
 
   # Silent Patch
-  echo installing SilentPatch
+  echo "Installing SilentPatch"
   sleep 2s
-  7z x SilentPatchSA.zip -oSilentPatch
+  7z x SilentPatchSA.zip -oSilentPatch/
   rm SilentPatch/ReadMe.txt
   mv SilentPatch modloader
+
+  # Widescreen fix
+  echo "Installing WidescreenFix"
+  sleep 2s
+  7z x SA_Widescreen_Fix2018.7z -otemp/
+  mv temp/"Widescreen Fix by ThirteenAG" modloader
+  mv temp/"Widescreen HOR+ Support by Wesser" modloader
+  rm -rf temp
+
+  # OpenLimitAdjuster
+
 
   rm ./*.zip ./*.7z ./*.rar
 }
 ### End
 
-installStable(){
+installMinimal(){
   echo "Stil Work in progress..."
   sleep 1s
 }
@@ -138,8 +131,8 @@ installStable(){
 echo "Fix GTA-SA"
 echo "Install ..."
 opts=(
-  "Latest mods/patches (Better compatibility with newer mods)"
-  "Stable mods/patches (Worse compatibility with newer mods but better stability)" 
+  "Recommended mods/patches"
+  "Minimal(asi-loader, cleo, modloader and silent patch)" 
   "Exit"
 )
 PS3="Please select an option: "  # Set the prompt for user input
@@ -147,12 +140,11 @@ select opt in "${opts[@]}"; do
   # Code to execute based on the chosen option
   case $REPLY in
     1)
-      echo "Installing latest mods and patches"
+      echo "Installing mods and patches"
       installLatest
       ;;
     2)
-      echo "Installing stable mods and patches"
-      installStable
+      installMinimal
       ;;
     3)
       echo "Quitting..."
@@ -160,7 +152,7 @@ select opt in "${opts[@]}"; do
       echo "Goodbye :D"
       ;;
     *) 
-      echo "Invalid option quitting"
+      echo "Invalid option, quitting"
       ;;
   esac
   break 

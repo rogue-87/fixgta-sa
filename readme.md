@@ -19,15 +19,15 @@ I'm currently updating the script so don't run it yet(unless you know what you'r
 - [CrashInfo](https://www.mixmods.com.br/2022/09/crashinfo/) Junior_Djjr
 - [FramerateVigilante](https://www.mixmods.com.br/2022/08/iii-vc-sa-framerate-vigilante/) Junior_Djjr
 - [Improved Streaming](https://www.mixmods.com.br/2022/04/improved-streaming/) by Junior_Djjr
-- [WidescreenFix](https://github.com/ThirteenAG/WidescreenFixesPack/releases/tag/gtasa) by ThirteenAG
+- [WidescreenFix & Widescreen HOR+ Support ](https://www.mixmods.com.br/2021/05/widescreen-fix-para-gta-sa-corrigir-widescreen/) by ThirteenAG, and Wesser
 - [WindowedMode](https://github.com/ThirteenAG/III.VC.SA.WindowedMode) by ThirteenAG
 - [Project2DFX](https://github.com/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/tag/gtasa) by ThirteenAG
 - [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) by ThirteenAG
 - [Cleolibrary/Cleo](https://github.com/cleolibrary/CLEO4)
 - [Skygfx](https://github.com/aap/skygfx) by aap
 - [SkyGrad](https://www.mixmods.com.br/2020/01/skygrad-sky-gradient-fix-corrigir-linhas-no-ceu/) by Wesser
-- [Widescreen HOR+ Support](https://www.gtagarage.com/mods/show.php?id=25380) by Wesser
 - [Modloader](https://github.com/thelink2012/modloader) by thelink2012
+- [Open Limit Adjuster](https://www.mixmods.com.br/2022/10/open-limit-adjuster/) by  LINK/2012, ThirteenAG and Blackbird88
 
 **Thank yall for your keeping this game alive ❤️**
 
