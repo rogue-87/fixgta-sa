@@ -24,7 +24,7 @@ sudo chmod +x ./fixgta-sa.sh
 
 3. Run the script
 ```bash
-./fixgta-sa
+./fixgta-sa.sh
 ```
 
 ## Mods list
