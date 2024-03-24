@@ -44,9 +44,9 @@ sudo chmod +x ./fixgta-sa.sh
 - [SkyGrad](https://www.mixmods.com.br/2020/01/skygrad-sky-gradient-fix-corrigir-linhas-no-ceu/) by Wesser
 - [Modloader](https://github.com/thelink2012/modloader) by thelink2012
 - [Open Limit Adjuster](https://www.mixmods.com.br/2022/10/open-limit-adjuster/) by  LINK/2012, ThirteenAG and Blackbird88
-- [Debug Menu](https://github.com/aap/debugmenu)
-- [Gta Debug](https://github.com/aap/gtadebug)
-- [GTA-SA v1 Hoodlum](https://github.com/MrNiceGuy420/GTA-SA-1.0-HOODLUM-No-CD-Fix-exe)
+- [Debug Menu](https://github.com/aap/debugmenu) by aap
+- [Gta Debug](https://github.com/aap/gtadebug) by aap
+- [GTA-SA v1 Hoodlum](https://github.com/MrNiceGuy420/GTA-SA-1.0-HOODLUM-No-CD-Fix-exe) by MrNiceGuy420
 
 **Thank yall for your keeping this game alive ❤️**
 
