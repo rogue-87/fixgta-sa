@@ -53,11 +53,13 @@ installLatest(){
   mods_list=(
     "CLEOPlus.zip"
     "CrashInfo.zip"
-    "SA_Project2DFX.7z"
     "FramerateVigilante.7z"
     "Improved_Streaming.7z"
-    "Sky_Gradient_Fix.7z"
+    "SA_Project2DFX.7z"
+    "SA_VC_III_Windowed_Mode.zip"
     "SA_Widescreen_Fix2018.7z"
+    "SkGfx.7z"
+    "Sky_Gradient_Fix.7z"
   )
   for mod in "${mods_list[@]}";
   do
