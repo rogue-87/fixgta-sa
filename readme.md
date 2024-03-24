@@ -2,14 +2,30 @@
 
 This is a simple script that sets up GTA San Andreas on Linux
 
-I'm currently updating the script so don't run it yet(unless you know what you're doing)
-
 ## Prerequisites
-
 - wget
 - jq
 - 7z
 - Dowgraded version of San Andreas(v1.0)
+
+#### **Please backup your game before running this script**
+
+## Running the script
+
+1. Open the terminal inside the game direcotry and run this command(this will download the script). Again, make sure you're running the script in the game direcotry(where the .exe file lies)
+```bash
+wget https://raw.githubusercontent.com/rogue-87/fixgta-sa/main/fixgta_sa.sh
+```
+
+2. Run this command so the script can become executable
+```bash
+sudo chmod +x ./fixgta-sa.sh
+```
+
+3. Run the script
+```bash
+./fixgta-sa
+```
 
 ## Mods list
 
@@ -28,6 +44,9 @@ I'm currently updating the script so don't run it yet(unless you know what you'r
 - [SkyGrad](https://www.mixmods.com.br/2020/01/skygrad-sky-gradient-fix-corrigir-linhas-no-ceu/) by Wesser
 - [Modloader](https://github.com/thelink2012/modloader) by thelink2012
 - [Open Limit Adjuster](https://www.mixmods.com.br/2022/10/open-limit-adjuster/) by  LINK/2012, ThirteenAG and Blackbird88
+- [Debug Menu](https://github.com/aap/debugmenu)
+- [Gta Debug](https://github.com/aap/gtadebug)
+- [GTA-SA v1 Hoodlum](https://github.com/MrNiceGuy420/GTA-SA-1.0-HOODLUM-No-CD-Fix-exe)
 
 **Thank yall for your keeping this game alive ❤️**
 
@@ -38,5 +57,5 @@ I'm currently updating the script so don't run it yet(unless you know what you'r
 
 ## TODOS
 
-- [ ] Script places mods in their correct location
+- [x] Script places mods in their correct location
 - [ ] Script sets up wine prefixes
