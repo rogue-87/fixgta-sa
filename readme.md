@@ -20,7 +20,7 @@ I'm currently updating the script so don't run it yet(unless you know what you'r
 - [FramerateVigilante](https://www.mixmods.com.br/2022/08/iii-vc-sa-framerate-vigilante/) Junior_Djjr
 - [Improved Streaming](https://www.mixmods.com.br/2022/04/improved-streaming/) by Junior_Djjr
 - [WidescreenFix & Widescreen HOR+ Support ](https://www.mixmods.com.br/2021/05/widescreen-fix-para-gta-sa-corrigir-widescreen/) by ThirteenAG, and Wesser
-- [WindowedMode](https://github.com/ThirteenAG/III.VC.SA.WindowedMode) by ThirteenAG
+- [WindowedMode](https://www.mixmods.com.br/2022/10/iii-vc-sa-windowed-mode/) by ThirteenAG
 - [Project2DFX](https://github.com/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/tag/gtasa) by ThirteenAG
 - [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) by ThirteenAG
 - [Cleolibrary/Cleo](https://github.com/cleolibrary/CLEO4)

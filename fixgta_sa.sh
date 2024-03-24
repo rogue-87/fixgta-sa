@@ -39,8 +39,6 @@ installLatest(){
     "ThirteenAG/Ultimate-ASI-Loader"
     "cleolibrary/CLEO4"
     "thelink2012/modloader"
-    "ThirteenAG/III.VC.SA.WindowedMode"
-    "aap/skygfx"
   )
   downloadGithub "${github_repos[@]}"
 
@@ -55,6 +53,7 @@ installLatest(){
   mods_list=(
     "CLEOPlus.zip"
     "CrashInfo.zip"
+    "SA_Project2DFX.7z"
     "FramerateVigilante.7z"
     "Improved_Streaming.7z"
     "Sky_Gradient_Fix.7z"
@@ -116,10 +115,11 @@ installLatest(){
   mv temp/"Widescreen HOR+ Support by Wesser" modloader
   rm -rf temp
 
-  # OpenLimitAdjuster
+  # Project2DFX
+  echo "Installing Project2DFX"
+  sleep 2s
 
-
-  rm ./*.zip ./*.7z ./*.rar
+  rm ./*.zip ./*.7z
 }
 ### End
 
