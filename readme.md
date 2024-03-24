@@ -14,7 +14,7 @@ This is a simple script that sets up GTA San Andreas on Linux
 
 1. Open the terminal inside the game direcotry and run this command(this will download the script). Again, make sure you're running the script in the game direcotry(where the .exe file lies)
 ```bash
-wget https://raw.githubusercontent.com/rogue-87/fixgta-sa/main/fixgta_sa.sh
+wget https://raw.githubusercontent.com/rogue-87/fixgta-sa/main/fixgta-sa.sh
 ```
 
 2. Run this command so the script can become executable
