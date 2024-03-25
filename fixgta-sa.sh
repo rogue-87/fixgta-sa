@@ -20,7 +20,7 @@ downloadGithub(){
     # Check if url is not empty
     if [[ "$url" != null  && "$url" != "" ]]; then
       # echo "Downloading $repo"
-      wget -q --show-progress $(echo "$url" | sed 's/"//g')
+      wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
       echo
     else
       echo "Error: Failed to download $repo"
@@ -49,7 +49,7 @@ installLatest(){
   # Project2DFX by ThirteenAG
   url=$(wget -qO- https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
   # echo "Downloading Project2DFX"
-  wget -q --show-progress $(echo "$url" | sed 's/"//g')
+  wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
 
   ## Download mods/patches from my repo
   mods_list=(
@@ -219,16 +219,16 @@ installLatest(){
 ### End
 
 installMinimal(){
-  echo "Sorry, stil work in progress..."
+  echo "Sorry, still work in progress..."
   sleep 1s
 }
 
 echo -e "\e[33mFix GTA-SA\e[0m"
 echo "Install ..."
 opts=(
-  "Recommended mods/patches                                                     "
+  "Recommended mods/patches"
   "Minimal(asi-loader, cleo, modloader and silent patch)" 
-  "Exit script                           "
+  "Exit script"
 )
 PS3="Please select an option: "  # Set the prompt for user input
 select opt in "${opts[@]}"; do
