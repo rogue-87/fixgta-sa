@@ -2,15 +2,13 @@
 # set -euo
 
 ### Download Latest Mods & Patches
-downloadRSV(){
+function download_rsv(){
   # 1st param is link
-  # 2nd param is mod name (optional)
-  # echo "Downloading $2"
   wget -q --show-progress --no-check-certificate "$1"
   echo
 }
 
-downloadGithub(){
+function download_github(){
   # 1st param is list
   local github_repos=("$@")
   for repo in "${github_repos[@]}"; do
@@ -29,11 +27,17 @@ downloadGithub(){
   done
 }
 
-installLatest(){
+# function extract_modloader(){
+# }
+
+# function extract_cleo(){
+# }
+
+function install_latest(){
   echo
   ## Silent's patches/mods
-  downloadRSV https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
-  downloadRSV https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
+  download_rsv https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
+  download_rsv https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
 
   ## Download mods and patches from github
   github_repos=(
@@ -43,7 +47,7 @@ installLatest(){
     "aap/debugmenu"
     "aap/gtadebug"
   )
-  downloadGithub "${github_repos[@]}"
+  download_github "${github_repos[@]}"
 
   ## Download mods and patches from github repos with tags
   # Project2DFX by ThirteenAG
@@ -87,13 +91,13 @@ installLatest(){
   echo
 
   # Cleo & Cleo+
-  echo -e "\e[33mInstalling Cleo & Cleo+\e[0m"
+  echo -e "\e[33mInstalling Cleo\e[0m"
   sleep 3s
   7z x CLEO4.zip -otemp/
   rm -rf temp/cleo_readme temp/cleo_sdk temp/vorbisFile.dll
   mv -f temp/* .
-  echo
-
+  
+  echo -e "\e[33mInstalling Cleo+\e[0m"
   7z x CLEOPlus.zip -otemp/
   mv -f temp/EN/CLEO/CLEO+.cleo ./cleo/
   rm -rf temp/*
@@ -216,9 +220,8 @@ installLatest(){
   echo "Don't forget to delete the temp folder(it's unnecessary)"
   sleep 1s
 }
-### End
 
-installMinimal(){
+function install_minimal(){
   echo "Sorry, still work in progress..."
   sleep 1s
 }
@@ -236,10 +239,10 @@ select opt in "${opts[@]}"; do
   case $REPLY in
     1)
       echo "Installing mods and patches"
-      installLatest
+      install_latest
       ;;
     2)
-      installMinimal
+      install_minimal
       ;;
     3)
       echo "Quitting..."
