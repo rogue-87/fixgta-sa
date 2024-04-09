@@ -1,7 +1,7 @@
 #!/bin/bash
 # set -euo
 
-### Download Latest Mods & Patches
+### Downloading Latest Mods & Patches
 function download_rsv(){
   # 1st param is link
   wget -q --show-progress --no-check-certificate "$1"
@@ -27,8 +27,31 @@ function download_github(){
   done
 }
 
-# function extract_modloader(){
-# }
+## Installing Mods & Patches
+
+find_zip_files() {
+  local start_dir="."
+  local extensions=( "zip" "7z" "rar" )
+
+  files=()
+  for extension in ${extensions[@]}; do
+    files=(${files[@]} "$(find "$start_dir" -maxdepth 1 -type f -name "*.${extension}")")
+  done
+
+  echo "${files[@]}"
+}
+
+
+## Extract modloader mod
+# $1 => mod file/folder
+# $2 => mod name (optional)
+function extract_modloader(){
+  echo -e "\e[33mInstalling $2\e[0m"
+  sleep 3s
+  7z x $1
+  mv -i 
+  echo
+}
 
 # function extract_cleo(){
 # }
@@ -72,10 +95,8 @@ function install_latest(){
     echo
     wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
   done
-  #
   
   ## Install the mods & patches
-  
   # bak up some files
   echo -e "\e[36mBacking up some files ...\e[0m"
   sleep 3s
@@ -98,6 +119,7 @@ function install_latest(){
   mv -f temp/* .
   
   echo -e "\e[33mInstalling Cleo+\e[0m"
+  sleep 3s
   7z x CLEOPlus.zip -otemp/
   mv -f temp/EN/CLEO/CLEO+.cleo ./cleo/
   rm -rf temp/*

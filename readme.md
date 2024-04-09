@@ -1,6 +1,10 @@
 ### Fix GTA-SA
 
-This is a script that sets up GTA San Andreas on Linux
+A script that sets up GTA San Andreas on Linux
+
+All it does right now is downloading the mods/patches and installing them.
+
+I wasn't able to fetch some of the mods so I had to include them in this repo
 
 ## Prerequisites
 
