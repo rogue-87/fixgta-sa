@@ -2,13 +2,13 @@
 # set -euo
 
 ### Download Latest Mods & Patches
-function download_rsv(){
+function download-rsv(){
   # 1st param is link
   wget -q --show-progress --no-check-certificate "$1"
   echo
 }
 
-function download_github(){
+function download-github(){
   # 1st param is list
   local github_repos=("$@")
   for repo in "${github_repos[@]}"; do
@@ -27,17 +27,21 @@ function download_github(){
   done
 }
 
-# function extract_modloader(){
-# }
+# extract modloader mods
+function extract-mod(){
+  echo "not done yet lol"
+}
 
-# function extract_cleo(){
-# }
+# extract cleo mod
+function extract-cleo-mod(){
+  echo "not done yet lol"
+}
 
-function install_latest(){
+function install-latest(){
   echo
   ## Silent's patches/mods
-  download_rsv https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
-  download_rsv https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
+  download-rsv https://silent.rockstarvision.com/uploads/SilentPatchSA.zip "SilentPatchSA"
+  download-rsv https://silent.rockstarvision.com/uploads/GInputSA.zip "Ginput"
 
   ## Download mods and patches from github
   github_repos=(
@@ -47,7 +51,7 @@ function install_latest(){
     "aap/debugmenu"
     "aap/gtadebug"
   )
-  download_github "${github_repos[@]}"
+  download-github "${github_repos[@]}"
 
   ## Download mods and patches from github repos with tags
   # Project2DFX by ThirteenAG
@@ -83,147 +87,162 @@ function install_latest(){
   mv vorbisFile.dll vorbisFile.dll.bak 
   echo
 
+  # make trash folder(rm -r ain't safe lol)
+  mkdir trash
+  timer="3s"
+  count=1
+
   # Ultimate-ASI-Loader
   echo -e "\e[33mInstalling Ultimate-ASI-Loader\e[0m"
-  sleep 3s
+  sleep $timer
   7z x Ultimate-ASI-Loader.zip
   mv -f dinput8.dll vorbisFile.dll
   echo
 
   # Cleo & Cleo+
   echo -e "\e[33mInstalling Cleo\e[0m"
-  sleep 3s
-  7z x CLEO4.zip -otemp/
-  rm -rf temp/cleo_readme temp/cleo_sdk temp/vorbisFile.dll
-  mv -f temp/* .
+  sleep $timer
+  7z x CLEO4.zip -otemp/$count/
+  mv -f temp/$count/cleo_readme temp/$count/cleo_sdk temp/$count/vorbisFile.dll trash/
+  mv -f temp/$count/* .
+  (( count++ ))
   
   echo -e "\e[33mInstalling Cleo+\e[0m"
-  7z x CLEOPlus.zip -otemp/
-  mv -f temp/EN/CLEO/CLEO+.cleo ./cleo/
-  rm -rf temp/*
+  7z x CLEOPlus.zip -otemp/$count/
+  mv -f temp/$count/EN/CLEO/CLEO+.cleo ./cleo/
+  mv -f temp/* trash
+  (( count++ ))
 
   # modloader
   echo -e "\e[33mInstalling modloader\e[0m"
-  sleep 3s
-  7z x modloader.zip -otemp/
-  mv -f temp/modloader . 
-  mv -f temp/modloader.asi .
-  rm -rf temp/*
+  sleep $timer
+  7z x modloader.zip -otemp/$count/
+  mv -f temp/$count/modloader temp/$count/modloader.asi . 
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Silent Patch
   echo -e "\e[33mInstalling SilentPatch\e[0m"
-  sleep 3s
+  sleep $timer
   7z x SilentPatchSA.zip -oSilentPatch/
-  rm SilentPatch/ReadMe.txt
+  # rm SilentPatch/ReadMe.txt
   mv -i SilentPatch modloader
   echo
 
   # Ginput
   echo -e "\e[33mInstalling Ginput\e[0m"
-  sleep 3s
+  sleep $timer
   7z x GInputSA.zip -oGInputSA
   mv -i GInputSA modloader
   echo
 
   # Debug menu
   echo -e "\e[33mInstalling Debug Menu\e[0m"
-  sleep 3s
-  7z x debugmenu_*.zip -otemp/ 
-  mv -i temp/debugmenu/SA/debugmenu.dll .
-  rm -rf temp/*
+  sleep $timer
+  7z x debugmenu_*.zip -otemp/$count/ 
+  mv -i temp/$count/debugmenu/SA/debugmenu.dll .
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # gtadebug
   echo -e "\e[33mInstalling gta-debug\e[0m"
-  sleep 3s
+  sleep $timer
   7z x gtadebug.zip
-  rm gtadebug/iii_debug.dll
-  rm gtadebug/vc_debug.dll
+  rm gtadebug/iii_debug.dll gtadebug/vc_debug.dll
   mv gtadebug/sa_debug.dll gtadebug/sa_debug.asi
   mv -i gtadebug modloader
   echo
 
   # Widescreen fix
   echo -e "\e[33mInstalling WidescreenFix\e[0m"
-  sleep 3s
-  7z x SA_Widescreen_Fix2018.7z -otemp/
-  mv -i temp/"Widescreen Fix by ThirteenAG" modloader
-  mv -i temp/"Widescreen HOR+ Support by Wesser" modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x SA_Widescreen_Fix2018.7z -otemp/$count/
+  mv -i temp/$count/"Widescreen Fix by ThirteenAG" modloader
+  mv -i temp/$count/"Widescreen HOR+ Support by Wesser" modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Project2DFX
   echo -e "\e[33mInstalling Project2DFX\e[0m"
-  sleep 3s
-  7z x SA_Project2DFX.7z -otemp/
-  mv -i temp/Project2DFX modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x SA_Project2DFX.7z -otemp/$count/
+  mv -i temp/$count/Project2DFX modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Windowed Mode
   echo -e "\e[33mInstalling Windowed Mode\e[0m"
-  sleep 3s
-  7z x SA_VC_III_Windowed_Mode.zip -otemp/
-  mv -i "temp/Windowed Mode" modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x SA_VC_III_Windowed_Mode.zip -otemp/$count/
+  mv -i "temp/$count/Windowed Mode" modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # SkyGfx
   echo -e "\e[33mInstalling SkyGfx\e[0m"
-  sleep 3s
-  7z x SkyGfx.7z -otemp/
-  mv -i temp/SkyGfx modloader
-  mv -i "temp/(fix)/CLEO/Fix Wood Blood Drops.cs" cleo
-  rm -rf temp/*
+  sleep $timer
+  7z x SkyGfx.7z -otemp/$count/
+  mv -i temp/$count/SkyGfx modloader
+  mv -i "temp/$count/(fix)/CLEO/Fix Wood Blood Drops.cs" cleo
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Sky Gradient Fix
   echo -e "\e[33mInstalling Sky Gradient Fix\e[0m"
-  sleep 3s
-  7z x Sky_Gradient_Fix.7z -otemp/
-  mv -i temp/SkyGrad modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x Sky_Gradient_Fix.7z -otemp/$count/
+  mv -i temp/$count/SkyGrad modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Crash Info
   echo -e "\e[33mInstalling Crash Info\e[0m"
-  sleep 3s
-  7z x CrashInfo.zip -otemp/
-  cp -r "temp/(SA)/EN/(mod - to the game folder)/." ./
-  rm -rf temp/*
+  sleep $timer
+  7z x CrashInfo.zip -otemp/$count/
+  cp -r "temp/$count/(SA)/EN/(mod - to the game folder)/." ./
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # FramerateVigilante
   echo -e "\e[33mInstalling FramerateVigilante\e[0m"
-  sleep 3s
-  7z x FramerateVigilante.7z -otemp/
-  mv -i "temp/GTA SA/FramerateVigilante" modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x FramerateVigilante.7z -otemp/$count/
+  mv -i "temp/$count/GTA SA/FramerateVigilante" modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Improved Streaming
   echo -e "\e[33mInstalling Improved_Streaming\e[0m"
-  sleep 3s
-  7z x Improved_Streaming.7z -otemp/
-  mv -i "temp/EN/Improved Streaming" modloader
-  rm -rf temp/*
+  sleep $timer
+  7z x Improved_Streaming.7z -otemp/$count/
+  mv -i "temp/$count/EN/Improved Streaming" modloader
+  mv -f temp/* trash
+  (( count++ ))
   echo
 
   # Hoodlum
-  echo "Installing Hoodlum"
+  echo "Downloading Hoodlum crack"
   wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/gta_sa.exe"
-  sleep 2s
+  sleep $timer
 
   rm ./*.zip ./*.7z
   echo -e "\e[32mDone!\e[0m"
-  echo "Don't forget to delete the temp folder(it's unnecessary)"
-  sleep 1s
+  echo "Don't forget to delete the temp and trash folders(they're useless)"
+  sleep $timer
 }
 
-function install_minimal(){
+function install-minimal(){
   echo "Sorry, still work in progress..."
-  sleep 1s
+  sleep $timer
 }
 
 echo -e "\e[33mFix GTA-SA\e[0m"
@@ -239,10 +258,10 @@ select opt in "${opts[@]}"; do
   case $REPLY in
     1)
       echo "Installing mods and patches"
-      install_latest
+      install-latest
       ;;
     2)
-      install_minimal
+      install-minimal
       ;;
     3)
       echo "Quitting..."
