@@ -8,12 +8,15 @@ I wasn't able to fetch some of the mods so I had to include them in this repo
 
 ## Prerequisites
 
-- wget
-- jq
-- 7z
+- ##### Install these packages using your system package manager
+
+```
+wget jq 7z
+```
+
 - Downgraded version of San Andreas(v1.0)
 
-#### **Please backup your game before running this script**
+#### **Please backup your game before running this script!**
 
 ## Running the script
 
@@ -23,16 +26,10 @@ I wasn't able to fetch some of the mods so I had to include them in this repo
 wget https://raw.githubusercontent.com/rogue-87/fixgta-sa/main/fixgta-sa.sh
 ```
 
-2. Run this command so the script can become executable
+2. Run the script
 
 ```bash
-sudo chmod +x ./fixgta-sa.sh
-```
-
-3. Run the script
-
-```bash
-./fixgta-sa.sh
+bash fixgta-sa.sh
 ```
 
 ## Mods list
@@ -66,4 +63,3 @@ sudo chmod +x ./fixgta-sa.sh
 ## TODOS
 
 - [x] Script places mods in their correct location
-- [ ] Script sets up wine prefixes
