@@ -11,7 +11,7 @@ I wasn't able to fetch some of the mods so I had to include them in this repo
 - ##### Install these packages using your system package manager
 
 ```
-wget jq 7z
+wget p7zip jq
 ```
 
 - Downgraded version of San Andreas(v1.0)
