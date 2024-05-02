@@ -89,28 +89,28 @@ function install-latest(){
   local count=1
 
   # Ultimate-ASI-Loader
-  echo -e "\e[33mInstalling Ultimate-ASI-Loader\e[0m"
+  echo -e "\e[33mExtracting Ultimate-ASI-Loader\e[0m"
   sleep $timer
   7z x Ultimate-ASI-Loader.zip
   mv -f dinput8.dll vorbisFile.dll
   echo
 
   # Cleo & Cleo+
-  echo -e "\e[33mInstalling Cleo\e[0m"
+  echo -e "\e[33mExtracting Cleo\e[0m"
   sleep $timer
   7z x CLEO4.zip -otemp/$count/
   mv -f temp/$count/cleo_readme temp/$count/cleo_sdk temp/$count/vorbisFile.dll trash/
   mv -f temp/$count/* .
   (( count++ ))
   
-  echo -e "\e[33mInstalling Cleo+\e[0m"
+  echo -e "\e[33mExtracting Cleo+\e[0m"
   7z x CLEOPlus.zip -otemp/$count/
   mv -f temp/$count/EN/CLEO/CLEO+.cleo ./cleo/
   mv -f temp/* trash
   (( count++ ))
 
   # modloader
-  echo -e "\e[33mInstalling modloader\e[0m"
+  echo -e "\e[33mExtracting modloader\e[0m"
   sleep $timer
   7z x modloader.zip -otemp/$count/
   mv -f temp/$count/modloader temp/$count/modloader.asi . 
@@ -119,7 +119,7 @@ function install-latest(){
   echo
 
   # Silent Patch
-  echo -e "\e[33mInstalling SilentPatch\e[0m"
+  echo -e "\e[33mExtracting SilentPatch\e[0m"
   sleep $timer
   7z x SilentPatchSA.zip -oSilentPatch/
   # rm SilentPatch/ReadMe.txt
@@ -127,14 +127,14 @@ function install-latest(){
   echo
 
   # Ginput
-  echo -e "\e[33mInstalling Ginput\e[0m"
+  echo -e "\e[33mExtracting Ginput\e[0m"
   sleep $timer
   7z x GInputSA.zip -oGInputSA
   mv -i GInputSA modloader
   echo
 
   # Debug menu
-  echo -e "\e[33mInstalling Debug Menu\e[0m"
+  echo -e "\e[33mExtracting Debug Menu\e[0m"
   sleep $timer
   7z x debugmenu_*.zip -otemp/$count/ 
   mv -i temp/$count/debugmenu/SA/debugmenu.dll .
@@ -143,7 +143,7 @@ function install-latest(){
   echo
 
   # gtadebug
-  echo -e "\e[33mInstalling gta-debug\e[0m"
+  echo -e "\e[33mExtracting gta-debug\e[0m"
   sleep $timer
   7z x gtadebug.zip
   rm gtadebug/iii_debug.dll gtadebug/vc_debug.dll
@@ -152,7 +152,7 @@ function install-latest(){
   echo
 
   # Widescreen fix
-  echo -e "\e[33mInstalling WidescreenFix\e[0m"
+  echo -e "\e[33mExtracting WidescreenFix\e[0m"
   sleep $timer
   7z x SA_Widescreen_Fix2018.7z -otemp/$count/
   mv -i temp/$count/"Widescreen Fix by ThirteenAG" modloader
@@ -162,7 +162,7 @@ function install-latest(){
   echo
 
   # Project2DFX
-  echo -e "\e[33mInstalling Project2DFX\e[0m"
+  echo -e "\e[33mExtracting Project2DFX\e[0m"
   sleep $timer
   7z x SA_Project2DFX.7z -otemp/$count/
   mv -i temp/$count/Project2DFX modloader
@@ -171,7 +171,7 @@ function install-latest(){
   echo
 
   # Windowed Mode
-  echo -e "\e[33mInstalling Windowed Mode\e[0m"
+  echo -e "\e[33mExtracting Windowed Mode\e[0m"
   sleep $timer
   7z x SA_VC_III_Windowed_Mode.zip -otemp/$count/
   mv -i "temp/$count/Windowed Mode" modloader
@@ -180,7 +180,7 @@ function install-latest(){
   echo
 
   # SkyGfx
-  echo -e "\e[33mInstalling SkyGfx\e[0m"
+  echo -e "\e[33mExtracting SkyGfx\e[0m"
   sleep $timer
   7z x SkyGfx.7z -otemp/$count/
   mv -i temp/$count/SkyGfx modloader
@@ -190,7 +190,7 @@ function install-latest(){
   echo
 
   # Sky Gradient Fix
-  echo -e "\e[33mInstalling Sky Gradient Fix\e[0m"
+  echo -e "\e[33mExtracting Sky Gradient Fix\e[0m"
   sleep $timer
   7z x Sky_Gradient_Fix.7z -otemp/$count/
   mv -i temp/$count/SkyGrad modloader
@@ -199,7 +199,7 @@ function install-latest(){
   echo
 
   # Crash Info
-  echo -e "\e[33mInstalling Crash Info\e[0m"
+  echo -e "\e[33mExtracting Crash Info\e[0m"
   sleep $timer
   7z x CrashInfo.zip -otemp/$count/
   cp -r "temp/$count/(SA)/EN/(mod - to the game folder)/." ./
@@ -208,7 +208,7 @@ function install-latest(){
   echo
 
   # FramerateVigilante
-  echo -e "\e[33mInstalling FramerateVigilante\e[0m"
+  echo -e "\e[33mExtracting FramerateVigilante\e[0m"
   sleep $timer
   7z x FramerateVigilante.7z -otemp/$count/
   mv -i "temp/$count/GTA SA/FramerateVigilante" modloader
@@ -217,7 +217,7 @@ function install-latest(){
   echo
 
   # Improved Streaming
-  echo -e "\e[33mInstalling Improved_Streaming\e[0m"
+  echo -e "\e[33mExtracting Improved_Streaming\e[0m"
   sleep $timer
   7z x Improved_Streaming.7z -otemp/$count/
   mv -i "temp/$count/EN/Improved Streaming" modloader
