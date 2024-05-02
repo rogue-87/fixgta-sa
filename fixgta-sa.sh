@@ -5,7 +5,6 @@
 function download-rsv(){
   # 1st param is link
   wget -q --show-progress --no-check-certificate "$1"
-  echo
 }
 
 function download-github(){
@@ -17,22 +16,23 @@ function download-github(){
 
     # Check if url is not empty
     if [[ "$url" != null  && "$url" != "" ]]; then
-      # echo "Downloading $repo"
       wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
-      echo
     else
       echo "Error: Failed to download $repo"
-      echo
     fi
   done
 }
 
 # extract modloader mods
+# not ready yet
 function extract-mod(){
-  echo "not done yet lol"
+  7z x "modname" -otemp/$count/
+  # INSERT CODE TO MOVE FILES HERE
+  (( count++ ))
 }
 
 # extract cleo mod
+# not ready yet
 function extract-cleo-mod(){
   echo "not done yet lol"
 }
@@ -56,7 +56,6 @@ function install-latest(){
   ## Download mods and patches from github repos with tags
   # Project2DFX by ThirteenAG
   url=$(wget -qO- https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
-  # echo "Downloading Project2DFX"
   wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
 
   ## Download mods/patches from my repo
@@ -73,10 +72,8 @@ function install-latest(){
   )
   for mod in "${mods_list[@]}";
   do
-    echo
     wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
   done
-  #
   
   ## Install the mods & patches
   
@@ -87,10 +84,10 @@ function install-latest(){
   mv vorbisFile.dll vorbisFile.dll.bak 
   echo
 
-  # make trash folder(rm -r ain't safe lol)
+  # make trash folder("rm -r" ain't safe lol)
   mkdir trash
-  timer="3s"
-  count=1
+  local timer="1s"
+  local count=1
 
   # Ultimate-ASI-Loader
   echo -e "\e[33mInstalling Ultimate-ASI-Loader\e[0m"
@@ -252,9 +249,8 @@ opts=(
   "Minimal(asi-loader, cleo, modloader and silent patch)" 
   "Exit script"
 )
-PS3="Please select an option: "  # Set the prompt for user input
+PS3="Please select an option: "
 select opt in "${opts[@]}"; do
-  # Code to execute based on the chosen option
   case $REPLY in
     1)
       echo "Installing mods and patches"
