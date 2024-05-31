@@ -4,7 +4,7 @@
 ### Download Latest Mods & Patches
 function download-rsv(){
   # 1st param is link
-  wget -q --show-progress --no-check-certificate "$1"
+  wget --no-check-certificate "$1"
 }
 
 function download-github(){
@@ -16,7 +16,7 @@ function download-github(){
 
     # Check if url is not empty
     if [[ "$url" != null  && "$url" != "" ]]; then
-      wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
+      wget  "$(echo "$url" | sed 's/"//g')"
     else
       echo "Error: Failed to download $repo"
     fi
@@ -56,7 +56,7 @@ function install-latest(){
   ## Download mods and patches from github repos with tags
   # Project2DFX by ThirteenAG
   url=$(wget -qO- https://api.github.com/repos/ThirteenAG/III.VC.SA.IV.Project2DFX/releases/1159120 | jq '.assets[0].browser_download_url')
-  wget -q --show-progress "$(echo "$url" | sed 's/"//g')"
+  wget "$(echo "$url" | sed 's/"//g')"
 
   ## Download mods/patches from my repo
   mods_list=(
@@ -72,7 +72,7 @@ function install-latest(){
   )
   for mod in "${mods_list[@]}";
   do
-    wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
+    wget "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/$mod"
   done
   
   ## Install the mods & patches
@@ -227,7 +227,7 @@ function install-latest(){
 
   # Hoodlum
   echo "Downloading Hoodlum crack"
-  wget -q --show-progress "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/gta_sa.exe"
+  wget "https://github.com/rogue-87/fixgta-sa/raw/main/mods/latest/gta_sa.exe"
   sleep $timer
 
   rm ./*.zip ./*.7z
